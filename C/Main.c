@@ -209,7 +209,40 @@ char* proxima_linha (FILE* arquivo)
     }
     else   
     IF (scanf ("%[^\n]\n", saida) != 1)
-        {murder ("Input incorreto do usuario");}
+        murder ("Input incorreto do usuario");
+
+    return saida;
+}
+
+// nextChar
+char proximo_caractere (FILE* arquivo)
+{
+    char saida = '\0';
+    IF (arquivo != null)
+    {
+        IF (fscanf (arquivo, "%c", &saida) != 1)
+        {murder ("Arquivo lido alem da conta");}
+    }
+    else   
+    IF (scanf (" %c", &saida) != 1)
+        murder ("Input incorreto do usuario");
+
+    return saida;
+}
+
+// nextByte
+unsigned char proximo_byte (FILE* arquivo) 
+{
+    unsigned char saida = 0;
+
+    IF (arquivo != null) 
+    { // %hhu lê um byte como número.
+        IF ( fscanf (arquivo, "%hhu", &saida) != 1) 
+        {murder("Arquivo lido além do esperado");}
+    } 
+    else
+        IF (scanf("%hhu", &saida) != 1)
+            murder("Entrada do usuário incorreta");
 
     return saida;
 }
@@ -435,11 +468,11 @@ double Str_para_Dbl (char* str)
             {
                 limpar (partes [x]);
             }
-            //limpar (partes); // <<<< adicionar essa linha dá um erro em judas perdeu as botas no código
+            limpar (partes); // <<<< adicionar essa linha dá um erro em judas perdeu as botas no código
             // não entendi porque, não acho que a eficiência que isso me daria vale realmente a pena 
             // o sofrimento mental que passei por isto, então estou aposentando essa por enquanto.
 
-            limpezas_feitas++; // <- APENAS PARA SABER QUANTO EU GANHARIA COM ISSO, NÃO TEM UMA LIMPEZA AQUI AINDA!
+            //limpezas_feitas++; // <- APENAS PARA SABER QUANTO EU GANHARIA COM ISSO, NÃO TEM UMA LIMPEZA AQUI AINDA!
 
             // 2400 lixo de memoria -> 880
         }
