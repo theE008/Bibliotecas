@@ -25,7 +25,7 @@ long long int comparacoes = 0.0;
 
 typedef unsigned int nat; // numeros naturais
 
-typedef enum { false = 0, true = 1 } boolean;
+typedef enum { false = 0, true = 1 } boolean; 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // QOL
@@ -145,7 +145,7 @@ void colorir (char* text, char* background)
     elif (eh_igual (text, "sublinhado"  )) texto =  4;
     elif (eh_igual (text, "preto"       )) texto = 30;
     elif (eh_igual (text, "vermelho"    )) texto = 31;
-    elif (eh_igual (text, "nao_debugar"       )) texto = 32;
+    elif (eh_igual (text, "verde"       )) texto = 32;
     elif (eh_igual (text, "amarelo"     )) texto = 33;
     elif (eh_igual (text, "azul"        )) texto = 34;
     elif (eh_igual (text, "magenta"     )) texto = 35;
@@ -154,7 +154,7 @@ void colorir (char* text, char* background)
 
     IF   (eh_igual (background, "preto"         )) fundo = 40;
     elif (eh_igual (background, "vermelho"      )) fundo = 41;
-    elif (eh_igual (background, "nao_debugar"         )) fundo = 42;
+    elif (eh_igual (background, "verde"         )) fundo = 42;
     elif (eh_igual (background, "amarelo"       )) fundo = 43;
     elif (eh_igual (background, "azul"          )) fundo = 44;
     elif (eh_igual (background, "magenta"       )) fundo = 45;
@@ -238,11 +238,11 @@ unsigned char proximo_byte (FILE* arquivo)
     IF (arquivo != null) 
     { // %hhu lê um byte como número.
         IF ( fscanf (arquivo, "%hhu", &saida) != 1) 
-        {murder("Arquivo lido além do esperado");}
+        {murder ("Arquivo lido além do esperado");}
     } 
     else
         IF (scanf("%hhu", &saida) != 1)
-            murder("Entrada do usuário incorreta");
+            murder ("Entrada do usuário incorreta");
 
     return saida;
 }
