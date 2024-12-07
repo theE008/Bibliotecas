@@ -20,18 +20,23 @@ static int limpezas_feitas = 0;
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // DEFINES
 
-// Sobrescrevendo malloc usando um macro
-void* MALLOC_OVERWRITER (size_t size){void* tmp = __builtin_malloc(size); if (tmp == NULL) printf \
-("\n\nERRO AO TENTAR RESERVAR ESPACO\n\n"); else {reservas_feitas++; return tmp;}}
-#define malloc(size) MALLOC_OVERWRITER(size)
+#define USAR_GERENCIADOR_MEMORIA // chave de uso
 
-// Sobrescrevendo free usando um macro
-void FREE_OVERWRITER (void* ptr){if (ptr == NULL) printf ("\n\nERRO AO TENTAR LIMPAR ESPACO\n\n"); \
-else {limpezas_feitas++; __builtin_free (ptr);}}
-#define free(ponteiro) FREE_OVERWRITER (ponteiro);
+// tranca de uso, apenas quando necessário
+#ifdef USAR_GERENCIADOR_MEMORIA
+    // Sobrescrevendo malloc usando um macro
+    void* MALLOC_OVERWRITER (size_t size){void* tmp = __builtin_malloc(size); if (tmp == NULL) printf \
+    ("\n\nERRO AO TENTAR RESERVAR ESPACO\n\n"); else {reservas_feitas++; return tmp;}}
+    #define malloc(size) MALLOC_OVERWRITER(size)
 
-// reservar, malloc mais prático
-#define reservar(tipo,quantos)  (tipo*) malloc (quantos*sizeof (tipo)); 
+    // Sobrescrevendo free usando um macro
+    void FREE_OVERWRITER (void* ptr){if (ptr == NULL) printf ("\n\nERRO AO TENTAR LIMPAR ESPACO\n\n"); \
+    else {limpezas_feitas++; __builtin_free (ptr); ptr = NULL;}}
+    #define free(ponteiro) FREE_OVERWRITER (ponteiro);
+
+    // reservar, malloc mais prático
+    #define reservar(tipo,quantos)  (tipo*) malloc (quantos*sizeof (tipo)); 
+#endif
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // FUNÇÕES
