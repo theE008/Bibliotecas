@@ -59,6 +59,7 @@
   "files.associations": {
     "*.lash": "c",
     "*.lass": "c",
-    "TESTAR_TUDO.C": "cpp"
+    "TESTAR_TUDO.C": "cpp",
+    "contador_de_comparacoes.h": "c"
   }
 }

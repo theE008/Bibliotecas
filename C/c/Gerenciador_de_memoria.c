@@ -4,7 +4,7 @@
  * @details: Melhor manutenção de ponteiros em C com esta biblioteca.
 */
 
-#include "Gerenciador_de_memoria.h"
+#include "../h/Gerenciador_de_memoria.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // VARIÁVEIS

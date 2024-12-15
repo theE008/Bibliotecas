@@ -4,7 +4,7 @@
  * @details: Conta a quantia de IFS sendo executada no seu código.
 */
 
-#include "Contador_de_comparacoes.h"
+#include "../h/Contador_de_comparacoes.h"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // VARIÁVEIS
@@ -16,7 +16,7 @@ static unsigned long int comparacoes = 0;
 
 // get & add
 int addComparacoes () {comparacoes++; return 1;}
-int getComparacoes () {return comparacoes;}
+int getComparacoes () {return comparacoes;}  
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // MAIN DE TESTE

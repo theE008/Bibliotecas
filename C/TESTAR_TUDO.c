@@ -1,5 +1,5 @@
-#include "Gerenciador_de_memoria.h"
-#include "Contador_de_comparacoes.h"
+#include "h/Gerenciador_de_memoria.h"
+#include "h/Contador_de_comparacoes.h"
 
 int main (void) 
 {
